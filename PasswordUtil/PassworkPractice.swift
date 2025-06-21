@@ -18,7 +18,7 @@ struct PassworkPractice: View {
     public var password: String
     @State private var isGood = false
     @State private var isBad = false
-    
+    @State private var isHarder = false
     @State private var passView : String
     var body: some View {
         VStack{
@@ -32,12 +32,22 @@ struct PassworkPractice: View {
                 }
             }label: {Label("Видимость", systemImage: (passVisibility ? "eye" : "eye.slash"))}
             List {
-                TextField(text: $visiblePass, prompt: Text("Потренируйтесь в вводе пароля")) {
+                Toggle(isOn: $isHarder.animation()){
+                    Text("Усложнение")
                 }
-                SecureField(text: $securePass, prompt: Text("А теперь если не видно")) {
+                if isHarder{
+                    SecureField(text: $securePass, prompt: Text("А теперь если не видно")) {
+                    }.textContentType(.nickname).disableAutocorrection(true)
+                    
+                }else{
+                    TextField(text: $visiblePass, prompt: Text("Потренируйтесь в вводе пароля")) {
+                    }.textContentType(.nickname).disableAutocorrection(true)
                 }
+                
+            
                 Button{
                     withAnimation{
+                        
                         if (password == visiblePass || password == securePass){
                             isGood = true
                             isBad = false
@@ -45,6 +55,8 @@ struct PassworkPractice: View {
                             isGood = false
                             isBad = true
                         }
+                        visiblePass = ""
+                        securePass = ""
                     }
                 } label: {
                     Text("Проверка")
