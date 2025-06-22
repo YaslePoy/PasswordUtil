@@ -22,6 +22,7 @@ struct ContentView: View {
     @State private var editSpecials = false
     private var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     var body: some View {
+        
         NavigationSplitView{
 
             List{
@@ -104,9 +105,7 @@ struct ContentView: View {
     }
     
     private func generatePass() -> String {
-        
         var totalPass : [Character] = []
-
         for _ in 0...Int(len-1){
             var candidates : [Character] = []
             

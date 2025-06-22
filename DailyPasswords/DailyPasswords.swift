@@ -9,49 +9,13 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-    }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-}
-
-struct DailyPasswordsEntryView : View {
-
-    
     
     private func generatePass(len: Int, useLetters: Bool, useNumbers: Bool, useSpecial: Bool) -> String {
         
         let specials = "!@#$%&*()+{}[]"
-        var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-        
+        let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
         var totalPass : [Character] = []
+
 
         for _ in 0...Int(len-1){
             var candidates : [Character] = []
@@ -71,16 +35,74 @@ struct DailyPasswordsEntryView : View {
         return String(totalPass)
     }
     
+    func placeholder(in context: Context) -> DailyPasswordSet {
+        DailyPasswordSet()
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping (DailyPasswordSet) -> ()) {
+        var entry = DailyPasswordSet()
+        completion(entry)
+    }
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        
+        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        
+        
+        var entries : [DailyPasswordSet] = []
+                for i in 0...1{
+                    var e = DailyPasswordSet(date: Date(timeIntervalSinceNow:  Double(i) * 5.0))
+                    e.pin = i.description + "~"
+                    e.longPass = String(Int.random(in: 0...1000))
+                    entries.append(e)
+                }
+        
+        print(Date.now)
+//        var passSet = DailyPasswordSet(date: Date(timeIntervalSinceNow: 10))
+//        
+//        passSet.pin = generatePass(len: 4, useLetters: false, useNumbers: true, useSpecial: false)
+//        passSet.longPin = generatePass(len: 6, useLetters: false, useNumbers: true, useSpecial: false)
+//        passSet.pass = generatePass(len: 8, useLetters: true, useNumbers: true, useSpecial: true)
+//        passSet.longPass = generatePass(len: 12, useLetters: true, useNumbers: true, useSpecial: true)
+
+//        entries.append(passSet)
+        
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
+    }
+
+//    func relevances() async -> WidgetRelevances<Void> {
+//        // Generate a list containing the contexts this widget is relevant in.
+//    }
+}
+
+struct DailyPasswordSet: TimelineEntry {
+    var date: Date = Date()
+    public var pin: String = "1234"
+    public var longPin: String = "098765"
+    public var pass: String = "AbC123{!"
+    public var longPass: String = "w4!X5@y6(Z7*"
+    
+    init(date: Date){
+        self.date = date
+    }
+    
+    init() {
+    }
+}
+
+struct DailyPasswordsEntryView : View {
+    
     var entry: Provider.Entry
 
     var body: some View {
 
         VStack {
             Text("Пароли дня").font(.title2)
-            Text(generatePass(len: 4, useLetters: false, useNumbers: true, useSpecial: false)).bold().fontDesign(.monospaced)
-            Text(generatePass(len: 6, useLetters: false, useNumbers: true, useSpecial: false)).bold().fontDesign(.monospaced)
-            Text(generatePass(len: 8, useLetters: true, useNumbers: true, useSpecial: true)).bold().fontDesign(.monospaced)
-            Text(generatePass(len: 12, useLetters: true, useNumbers: true, useSpecial: true)).bold().fontDesign(.monospaced).font(.subheadline)
+            Text(entry.pin).bold().fontDesign(.monospaced)
+            Text(entry.longPin).bold().fontDesign(.monospaced)
+            Text(entry.pass).bold().fontDesign(.monospaced)
+            Text(entry.longPass).bold().fontDesign(.monospaced).font(.subheadline)
         
         }
     }
@@ -102,13 +124,12 @@ struct DailyPasswords: Widget {
             }
         }
         .configurationDisplayName("Пароли дня")
-        .description("Подсказка для смены пароля, если какой-то пронравился")
+        .description("Подсказка для смены пароля, если какой-то пронравился").supportedFamilies([.systemSmall])
     }
 }
 
 #Preview(as: .systemSmall) {
     DailyPasswords()
 } timeline: {
-    SimpleEntry(date: .now)
-    SimpleEntry(date: .now)
+    DailyPasswordSet()
 }
