@@ -11,10 +11,10 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-    @State private var useLetters = false
-    @State private var useNumbers = false
-    @State private var useSpecial = false
-    @State private var len = 8.0
+    @State public var useLetters = false
+    @State public var useNumbers = false
+    @State public var useSpecial = false
+    @State public var len = 8.0
     @State private var count = 10.0
     @State private var isEditing = false
     @State private var passwords : [Password] = []

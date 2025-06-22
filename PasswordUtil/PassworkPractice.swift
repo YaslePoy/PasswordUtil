@@ -44,7 +44,7 @@ struct PassworkPractice: View {
                     }.textContentType(.nickname).disableAutocorrection(true)
                 }
                 
-            
+                
                 Button{
                     withAnimation{
                         
@@ -72,7 +72,13 @@ struct PassworkPractice: View {
                     Label("Очистить", systemImage: "eraser")
                 }
                 Button{
+#if os(iOS)
                     UIPasteboard.general.string = password
+#else
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(password, forType: .string)
+#endif
+
                 } label: {
                     Label("Скопировать", systemImage: "clipboard")
                 }

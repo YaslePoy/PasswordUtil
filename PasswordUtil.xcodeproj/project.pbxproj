@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		76784CBA2E08420E0029B277 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76784CB92E08420E0029B277 /* WidgetKit.framework */; };
+		76784CBC2E08420E0029B277 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76784CBB2E08420E0029B277 /* SwiftUI.framework */; };
+		76784CC92E08420F0029B277 /* DailyPasswordsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 76784CB72E08420E0029B277 /* DailyPasswordsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		760404DC2E06F53F003D2210 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = 760404CB2E06F53E003D2210;
 			remoteInfo = PasswordUtil;
 		};
+		76784CC72E08420F0029B277 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 760404C42E06F53E003D2210 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76784CB62E08420E0029B277;
+			remoteInfo = DailyPasswordsExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76784CCA2E08420F0029B277 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				76784CC92E08420F0029B277 /* DailyPasswordsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		760404CC2E06F53E003D2210 /* PasswordUtil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordUtil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		760404DB2E06F53F003D2210 /* PasswordUtilTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordUtilTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		760404E52E06F53F003D2210 /* PasswordUtilUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordUtilUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76784CB72E08420E0029B277 /* DailyPasswordsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyPasswordsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		76784CB92E08420E0029B277 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		76784CBB2E08420E0029B277 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		76784CCD2E08420F0029B277 /* Exceptions for "DailyPasswords" folder in "DailyPasswordsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 76784CB62E08420E0029B277 /* DailyPasswordsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		760404CE2E06F53E003D2210 /* PasswordUtil */ = {
@@ -43,6 +83,14 @@
 		760404E82E06F53F003D2210 /* PasswordUtilUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PasswordUtilUITests;
+			sourceTree = "<group>";
+		};
+		76784CBD2E08420E0029B277 /* DailyPasswords */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				76784CCD2E08420F0029B277 /* Exceptions for "DailyPasswords" folder in "DailyPasswordsExtension" target */,
+			);
+			path = DailyPasswords;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,15 +117,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76784CB42E08420E0029B277 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76784CBC2E08420E0029B277 /* SwiftUI.framework in Frameworks */,
+				76784CBA2E08420E0029B277 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		760404C32E06F53E003D2210 = {
 			isa = PBXGroup;
 			children = (
+				76E5D6772E07E6CC009767C7 /* PasswordUtilDesktop */,
 				760404CE2E06F53E003D2210 /* PasswordUtil */,
 				760404DE2E06F53F003D2210 /* PasswordUtilTests */,
 				760404E82E06F53F003D2210 /* PasswordUtilUITests */,
+				76784CBD2E08420E0029B277 /* DailyPasswords */,
+				76784CB82E08420E0029B277 /* Frameworks */,
 				760404CD2E06F53E003D2210 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +148,25 @@
 				760404CC2E06F53E003D2210 /* PasswordUtil.app */,
 				760404DB2E06F53F003D2210 /* PasswordUtilTests.xctest */,
 				760404E52E06F53F003D2210 /* PasswordUtilUITests.xctest */,
+				76784CB72E08420E0029B277 /* DailyPasswordsExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		76784CB82E08420E0029B277 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76784CB92E08420E0029B277 /* WidgetKit.framework */,
+				76784CBB2E08420E0029B277 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76E5D6772E07E6CC009767C7 /* PasswordUtilDesktop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PasswordUtilDesktop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +179,12 @@
 				760404C82E06F53E003D2210 /* Sources */,
 				760404C92E06F53E003D2210 /* Frameworks */,
 				760404CA2E06F53E003D2210 /* Resources */,
+				76784CCA2E08420F0029B277 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				76784CC82E08420F0029B277 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				760404CE2E06F53E003D2210 /* PasswordUtil */,
@@ -163,6 +242,28 @@
 			productReference = 760404E52E06F53F003D2210 /* PasswordUtilUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		76784CB62E08420E0029B277 /* DailyPasswordsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76784CCE2E08420F0029B277 /* Build configuration list for PBXNativeTarget "DailyPasswordsExtension" */;
+			buildPhases = (
+				76784CB32E08420E0029B277 /* Sources */,
+				76784CB42E08420E0029B277 /* Frameworks */,
+				76784CB52E08420E0029B277 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				76784CBD2E08420E0029B277 /* DailyPasswords */,
+			);
+			name = DailyPasswordsExtension;
+			packageProductDependencies = (
+			);
+			productName = DailyPasswordsExtension;
+			productReference = 76784CB72E08420E0029B277 /* DailyPasswordsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +285,9 @@
 						CreatedOnToolsVersion = 16.4;
 						TestTargetID = 760404CB2E06F53E003D2210;
 					};
+					76784CB62E08420E0029B277 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 				};
 			};
 			buildConfigurationList = 760404C72E06F53E003D2210 /* Build configuration list for PBXProject "PasswordUtil" */;
@@ -203,6 +307,7 @@
 				760404CB2E06F53E003D2210 /* PasswordUtil */,
 				760404DA2E06F53F003D2210 /* PasswordUtilTests */,
 				760404E42E06F53F003D2210 /* PasswordUtilUITests */,
+				76784CB62E08420E0029B277 /* DailyPasswordsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +328,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		760404E32E06F53F003D2210 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76784CB52E08420E0029B277 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +365,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76784CB32E08420E0029B277 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +384,11 @@
 			isa = PBXTargetDependency;
 			target = 760404CB2E06F53E003D2210 /* PasswordUtil */;
 			targetProxy = 760404E62E06F53F003D2210 /* PBXContainerItemProxy */;
+		};
+		76784CC82E08420F0029B277 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76784CB62E08420E0029B277 /* DailyPasswordsExtension */;
+			targetProxy = 76784CC72E08420F0029B277 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -518,6 +642,60 @@
 			};
 			name = Release;
 		};
+		76784CCB2E08420F0029B277 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75K46PUYA5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyPasswords/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyPasswords;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mimm.PasswordUtil.DailyPasswords;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		76784CCC2E08420F0029B277 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 75K46PUYA5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyPasswords/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DailyPasswords;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mimm.PasswordUtil.DailyPasswords;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +731,15 @@
 			buildConfigurations = (
 				760404F62E06F53F003D2210 /* Debug */,
 				760404F72E06F53F003D2210 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76784CCE2E08420F0029B277 /* Build configuration list for PBXNativeTarget "DailyPasswordsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76784CCB2E08420F0029B277 /* Debug */,
+				76784CCC2E08420F0029B277 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
