@@ -40,7 +40,7 @@ struct Provider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (DailyPasswordSet) -> ()) {
-        var entry = DailyPasswordSet()
+        let entry = DailyPasswordSet()
         completion(entry)
     }
 
@@ -50,23 +50,36 @@ struct Provider: TimelineProvider {
         
         
         var entries : [DailyPasswordSet] = []
-                for i in 0...1{
-                    var e = DailyPasswordSet(date: Date(timeIntervalSinceNow:  Double(i) * 5.0))
-                    e.pin = i.description + "~"
-                    e.longPass = String(Int.random(in: 0...1000))
-                    entries.append(e)
-                }
+//                for i in 0...1{
+//                    var e = DailyPasswordSet(date: Date(timeIntervalSinceNow:  Double(i) * 5.0))
+//                    e.pin = i.description + "~"
+//                    e.longPass = String(Int.random(in: 0...1000))
+//                    entries.append(e)
+//                }
         
         print(Date.now)
-//        var passSet = DailyPasswordSet(date: Date(timeIntervalSinceNow: 10))
-//        
-//        passSet.pin = generatePass(len: 4, useLetters: false, useNumbers: true, useSpecial: false)
-//        passSet.longPin = generatePass(len: 6, useLetters: false, useNumbers: true, useSpecial: false)
-//        passSet.pass = generatePass(len: 8, useLetters: true, useNumbers: true, useSpecial: true)
-//        passSet.longPass = generatePass(len: 12, useLetters: true, useNumbers: true, useSpecial: true)
-
-//        entries.append(passSet)
+        var passSet = DailyPasswordSet(date: Date())
         
+        passSet.pin = generatePass(len: 4, useLetters: false, useNumbers: true, useSpecial: false)
+        passSet.longPin = generatePass(len: 6, useLetters: false, useNumbers: true, useSpecial: false)
+        passSet.pass = generatePass(len: 8, useLetters: true, useNumbers: true, useSpecial: true)
+        passSet.longPass = generatePass(len: 12, useLetters: true, useNumbers: true, useSpecial: true)
+
+        let now = Date().timeIntervalSince1970
+
+        entries.append(passSet)
+        let tz = Calendar.current.timeZone
+        let tzNow = Int(now) + tz.secondsFromGMT()
+        let day = tzNow / 86400
+        let tommorow = Double((day + 1) * 86400 + 5 - tz.secondsFromGMT())
+        let date = Date(timeIntervalSince1970: tommorow)
+        print("End at \(date)")
+        passSet = DailyPasswordSet(date: date)
+        passSet.pin = "Гене"
+        passSet.longPin = "рируем"
+        passSet.pass = "новые"
+        passSet.longPass = "комбинации"
+        entries.append(passSet)
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
